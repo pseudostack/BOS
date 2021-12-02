@@ -32,31 +32,55 @@ async function modifyPdf() {
 
     console.log(height);
 
+    const form = BOS.getForm()
 
+    const contract_DD = form.createTextField("contract_DD");
 
-
-    firstPage.drawText('11', {
+    contract_DD.addToPage(firstPage, {
       x: 495,
-      y: 708,
-      size: 10,
+      y: 706,
+      width: 12,
+      height: 14,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
-    
-    firstPage.drawText('11', {
+    contract_DD.setText('11');
+
+
+    const contract_MM = form.createTextField("contract_MM");
+
+    contract_MM.addToPage(firstPage, {
       x: 530,
-      y: 708,
-      size: 10,
+      y: 706,
+      width: 12,
+      height: 14,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
+    contract_MM.setText('11');
+
     
-    firstPage.drawText('1989', {
-      x: 565,
-      y: 708,
-      size: 10,
+
+    const contract_YY = form.createTextField("contract_YY");
+
+    contract_YY.addToPage(firstPage, {
+      x: 560,
+      y: 706,
+      width: 24,
+      height: 14,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+
+    contract_YY.setText('1989');
 
 
     firstPage.drawText('Berlin Auto Sales Inc', {
@@ -94,77 +118,210 @@ async function modifyPdf() {
       font: helveticaFont,
     })
 
-    firstPage.drawText('Farhan Hossein', {
-      x: 20,
-      y: 676,
-      size: 10,
+
+
+    const first_name = form.createTextField("first_name");
+
+    first_name.addToPage(firstPage, {
+      x: 86,
+      y: 672,
+      width: 30,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
-    firstPage.drawText('105 Breithaupt St', {
-      x: 20,
-      y: 656,
-      size: 10,
+    first_name.setText('first_name');
+
+
+    const middle_name = form.createTextField("middle_name");
+
+    middle_name.addToPage(firstPage, {
+      x: 180,
+      y: 672,
+      width: 30,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
-    firstPage.drawText('Waterloo', {
-      x: 20,
-      y: 636,
-      size: 10,
-      font: helveticaFont,
-    })
-
-    firstPage.drawText('Ontario', {
-      x: 162,
-      y: 636,
-      size: 10,
-      font: helveticaFont,
-    })
-
-    firstPage.drawText('N2H 5G9', {
-      x: 236,
-      y: 636,
-      size: 10,
-      font: helveticaFont,
-    })
+    middle_name.setText('Jake');
 
 
+    const last_name = form.createTextField("last_name");
 
-    firstPage.drawText('519 745 7856', {
-      x: 20,
-      y: 616,
-      size: 10,
-      font: helveticaFont,
-    })
-
-    firstPage.drawText('226 336 7873', {
-      x: 162,
-      y: 616,
-      size: 10,
-      font: helveticaFont,
-    })
-
-    firstPage.drawText('H6aw8aw7eaw7856', {
-      x: 20,
-      y: 596,
-      size: 10,
-      font: helveticaFont,
-    })
-
-    firstPage.drawText('2020-01-01', {
+    last_name.addToPage(firstPage, {
       x: 240,
-      y: 596,
-      size: 10,
+      y: 672,
+      width: 30,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
-    firstPage.drawText('info@berlinautosales.ca', {
+    last_name.setText('Hossein');
+
+
+    const purchaser_address = form.createTextField("purchaser_address");
+
+    purchaser_address.addToPage(firstPage, {
       x: 20,
-      y: 582,
-      size: 10,
+      y: 652,
+      width: 100,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+
+    purchaser_address.setText('105 Breithaupt St');
+
+
+    const purchaser_city = form.createTextField("purchaser_city");
+
+    purchaser_city.addToPage(firstPage, {
+        x: 20,
+        y: 632,
+      width: 100,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
+      font: helveticaFont,
+    })
+
+    purchaser_city.setText('Waterloo');
+
+
+
+    const purchaser_prov = form.createTextField("purchaser_prov");
+
+    purchaser_prov.addToPage(firstPage, {
+      x: 162,
+        y: 632,
+      width: 50,
+      height: 13,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
+      font: helveticaFont,
+    })
+
+    purchaser_prov.setText('Ontario');
+
+///////////////////////////
+
+const purchaser_pc = form.createTextField("purchaser_pc");
+
+purchaser_pc.addToPage(firstPage, {
+  x: 236,
+    y: 632,
+  width: 50,
+  height: 13,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+purchaser_pc.setText('N2H 5G9');
+
+///////////////////////////
+
+const purchaser_tn = form.createTextField("purchaser_tn");
+
+purchaser_tn.addToPage(firstPage, {
+  x: 20,
+  y: 610,
+  width: 80,
+  height: 13,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+purchaser_tn.setText('519 745 7856');
+
+
+///////////////////////////
+
+const purchaser_bn = form.createTextField("purchaser_bn");
+
+purchaser_bn.addToPage(firstPage, {
+  x: 162,
+  y: 610,
+  width: 80,
+  height: 13,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+purchaser_bn.setText('226 336 7873');
+
+
+///////////////////////////
+
+const driver_license = form.createTextField("driver_license");
+
+driver_license.addToPage(firstPage, {
+  x: 20,
+  y: 595,
+  width: 80,
+  height: 9,
+  textSize: 12,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+driver_license.setText('H6aw8aw7eaw7856');
+
+
+///////////////////////////
+
+const dl_expiry = form.createTextField("dl_expiry");
+
+dl_expiry.addToPage(firstPage, {
+  x: 240,
+  y: 595,
+  width: 40,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+dl_expiry.setText('2020-01-01');
+
+
+
+///////////////////////////
+
+const purhaser_email = form.createTextField("purhaser_email");
+
+purhaser_email.addToPage(firstPage, {
+  x: 20,
+  y: 580,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+purhaser_email.setText('info@berlinautosales.ca');
 
 
     //VEHICLE INFORMATION
@@ -607,9 +764,6 @@ const c_tots = [];
 const tots_cents = [];
 const c_tots_cents = [];
 
-const form = BOS.getForm()
-
-
 var inc_y = 551;
 
 for (var i = 0; i < 27 ; i++)
@@ -668,6 +822,39 @@ for (var i = 0; i < 27 ; i++)
 }
 
 
+const tbdue = 'tbdue';
+const tbdue_cents = 'tbdue_cents';
+
+const total_balane_due =  form.createTextField(tbdue);
+const total_balane_due_cents = form.createTextField(tbdue_cents);
+
+
+total_balane_due .addToPage(firstPage, {
+  x: 522,
+  y: 110,
+  width: 50,
+  height: 13,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+total_balane_due_cents.addToPage(firstPage, {
+  x: 578,
+  y: 110,
+  width: 14,
+  height: 13,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
+  font: helveticaFont,
+})
+
+
+total_balane_due.setText('5555');
+total_balane_due_cents.setText('00');
+
+total_balane_due.setAlignment(TextAlignment.Right);
+total_balane_due_cents.setAlignment(TextAlignment.Left);
 
 
   //const pdfBytes = await BOS.save()
