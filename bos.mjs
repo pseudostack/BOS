@@ -1,22 +1,66 @@
 import express from 'express';
-
+import path from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import * as http from 'http';
 import * as fs from 'fs';
+import bodyParser from 'body-parser'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
+import ejs from 'ejs'
 import {degrees, PDFDocument, rgb, StandardFonts, TextAlignment} from 'pdf-lib';
 
 var app  = express();
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+app.use(
+  "/css",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
+)
+
+app.use(
+  "/views",
+  express.static(path.join(__dirname, "views"))
+)
+
+app.use(
+  "/js",
+  express.static(path.join(__dirname, "node_modules/bootstrap/dist/js"))
+)
+app.use("/js", express.static(path.join(__dirname, "node_modules/jquery/dist")))
+
+
 var listener = app.listen(3001, function(){
+  console.log("server running on port 3001");
 });
 
 app.get('/new', function(req,res){
   res.sendFile('/projects/bos/new.html');
 });
 
-app.get('/BOS', function(req,res){
-  res.sendFile('/projects/bos/BOS.PDF');
+
+app.post('/BOS/Submit', function(req,res){
+  console.log(req.body);
+console.log("data recieved!");
+
 });
+
+app.get('/BOS', function(req,res){
+   
+    // Render page using renderFile method
+    ejs.renderFile(path.join(__dirname,'/views/bos.ejs'), {}, 
+        {}, function (err, template) {
+        if (err) {
+            throw err;
+        } else {
+            res.end(template);
+        }
+    });
+});
+
 
 modifyPdf();
 
@@ -65,7 +109,7 @@ async function modifyPdf() {
 
     contract_MM.setText('11');
 
-    
+
 
     const contract_YY = form.createTextField("contract_YY");
 
@@ -482,7 +526,7 @@ firstPage.drawText('x', {
     })
 
 
-            //Daily Rental 
+            //Daily Rental
             firstPage.drawText('x', {
               x: 480,
               y: 592,
@@ -490,14 +534,14 @@ firstPage.drawText('x', {
               font: helveticaFont,
             })
 
-                        //MTO BRAND 
+                        //MTO BRAND
                         firstPage.drawText('REBUILT', {
                           x: 480,
                           y: 582,
                           size: 8,
                           font: helveticaFont,
                         })
-//****INSURANCE INFORMATION**************** */            
+//****INSURANCE INFORMATION**************** */
 
 //Name of insurance company
 firstPage.drawText('TD INSURANCE', {
@@ -533,7 +577,7 @@ firstPage.drawText('Mike 519 745 7856', {
 })
 
 
-//Vehicle to be traded in 
+//Vehicle to be traded in
 
 //year
 firstPage.drawText('12', {
@@ -636,7 +680,7 @@ firstPage.drawText('TD', {
   font: helveticaFont,
 })
 
-//Lien Amount 
+//Lien Amount
 firstPage.drawText('$25,000', {
   x: 200,
   y: 402,
@@ -645,7 +689,7 @@ firstPage.drawText('$25,000', {
 })
 
 
-//Comments 
+//Comments
 firstPage.drawText('CARFAX COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM COLLISION CLAIM CLAIM COLLISION CLAIM CLAIM COLLISION CLAIM CLAIM COLLISION CLAIM CLAIM COLLISION CLAIM CLAIM COLLISION CLAIM', {
   x: 20,
   y: 357,
@@ -802,7 +846,7 @@ for (var i = 0; i < 27 ; i++)
     borderWidth: 0,
     font: helveticaFont,
   })
-  
+
   c_tots_cents[i].addToPage(firstPage, {
     x: 578,
     y: inc_y,

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="/views/formWizard.css">
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index page</title>
+  </head>
+  <body>
+    <section class="wizard-section">
+    		<div class="row no-gutters">
+    			<div class="col">
+    				<div class="form-wizard">
+    					<form id="bosFORM" action="" method="post" role="form">
+    						<div class="form-wizard-header">
+    							<p>Fill all form field to go next step</p>
+    							<ul class="list-unstyled form-wizard-steps clearfix">
+    								<li class="active"><span>1</span></li>
+    								<li><span>2</span></li>
+    								<li><span>3</span></li>
+    								<li><span>4</span></li>
+                    <li><span>5</span></li>
+                                <li><span>6</span></li>
+    							</ul>
+    						</div>
+    						<fieldset class="wizard-fieldset show">
+    							<h5>Personal Information</h5>
+          <div class="row"> <div class="col">
+                         <div class="row g-3">
+                              <div class="col-g-3">
+                          <label for="firstName">First Name</label>
+                          <input type="text" class="form-control form-control-sm" id="firstname" name="firstname">
+                  </div>
+                      <div class="col-g-3">
+                          <label for="middleName">Middle Name</label>
+                          <input type="text" class="form-control form-control-sm" id="middleName" name="middleName">
+                        </div>
+                                <div class="col-g-3">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" class="form-control form-control-sm" name="lastname" name="lastname">
+                        </div>
+                      </div>
+                          <div class="col-g-3">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" id="address" name="address">
+                        </div><div class="row">
+                          <div class="col-g-3">
+                          <label for="City">City</label>
+                          <input type="text" class="form-control" id="City" name="City">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="Province">Province</label>
+                          <input type="text" class="form-control" id="Province"  name="Province">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="postalcode">postalcode</label>
+                          <input type="text" class="form-control" id="postalcode" name="postalcode">
+                        </div>
+                      </div>
+                          <div class="col-g-3">
+                          <label for="Telephone">Telephone</label>
+                          <input type="text" class="form-control" id="Telephone" name="Telephone">
+                        </div>
+                        <div class="row">
+                          <div class="col-g-3">
+                          <label for="DriversLicenseNo">DriversLicenseNo</label>
+                          <input type="text" class="form-control" id="DriversLicenseNo" name="DriversLicenseNo">
+                        </div>
+
+                          <div class="col-g-3">
+                          <label for="DriversLicenseEx">DriversLicenseEx</label>
+                          <input type="text" class="form-control" id="DriversLicenseEx" name="DriversLicenseEx">
+                        </div>
+                  </div>
+                          <div class="col-g-3">
+                          <label for="email">email</label>
+                          <input type="text" class="form-control" id="email" name="email">
+                        </div>
+                  </div></div>
+
+
+
+
+
+    							<div class="form-group clearfix">
+    								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+    							</div>
+    						</fieldset>
+    						<fieldset class="wizard-fieldset">
+    							<h5>Account Information</h5>
+                  <div class="col">
+                          <div class="col-g-3">
+                          <label for="vehicleYear">Year</label>
+                          <input type="text" class="form-control" id="vehicleYear" name="vehicleYear">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="vehicleMake">Make</label>
+                          <input type="text" class="form-control" id="vehicleMake" name="vehicleMake">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="vehicleMake">Model</label>
+                          <input type="text" class="form-control" id="vehicleMake" name="vehicleMake">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="vehicleTrim">Trim</label>
+                          <input type="text" class="form-control" id="vehicleTrim" name="vehicleTrim">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="vehicleColour">Colour</label>
+                          <input type="text" class="form-control" id="vehicleColour" name="vehicleColour">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="vin">VIN</label>
+                          <input type="text" class="form-control" id="vin" name="vin">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="kms">KMS</label>
+                          <input type="text" class="form-control" id="kms" name="kms">
+                        </div>
+
+                      <div class="col-g-3">
+                <label for="comments">Comments</label>
+            <textarea class="form-control" aria-label="Comments"  id="comments" style="min-height:200px;" name="comments"></textarea>
+          </div>
+
+            <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="safetycertificate" name="safetycertificate">
+    <label class="form-check-label" for="safetycertificate">
+      Safety Standards Certificate
+    </label>
+
+                    </div>
+    							<div class="form-group clearfix">
+    								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+    								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+    							</div>
+    						</fieldset>
+                <fieldset class="wizard-fieldset">
+                  <h5>Insurance Information</h5>
+                <div class="col-g-3">
+                <label for="insuranceCompanyName">Name of Insurance Company</label>
+                <input type="text" class="form-control" id="insuranceCompanyName" name="insuranceCompanyName">
+              </div>
+                <div class="col-g-3">
+                <label for="insurancePolicyNum">Policy Number</label>
+                <input type="text" class="form-control"  id="insurancePolicyNum" name="insurancePolicyNum">
+              </div>
+            <div class="col-g-3">
+            <label for="insuranceExpiryDate">Expiry Date</label>
+            <input type="text" class="form-control" id="insuranceExpiryDate" name="insuranceExpiryDate">
+          </div>
+        <div class="col-g-3">
+        <label for="insuranceAgent">Insurance Agent</label>
+        <input type="text" class="form-control" id="insuranceAgent" name="insuranceAgent">
+      </div>
+    <div class="col-g-3">
+    <label for="insurancePhoneNum">Insurance Phone Number</label>
+    <input type="text" class="form-control" id="insurancePhoneNum"  name="insurancePhoneNum">
+  </div>
+                  <div class="form-group clearfix">
+                    <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+                    <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                  </div>
+                </fieldset>
+
+                <fieldset class="wizard-fieldset">
+                  <h5>Vehicle TO Be Traded In</h5>
+                  <div class="col">
+                          <div class="col-g-3">
+                          <label for="tradeInVehicleYear">Year</label>
+                          <input type="text" class="form-control" id="tradeInVehicleYear" name="tradeInVehicleYear">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tradeInVehicleMake">Make</label>
+                          <input type="text" class="form-control" id="tradeInVehicleMake" name="tradeInVehicleMake"> 
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tradeInVehicleMake">Model</label>
+                          <input type="text" class="form-control" id="tradeInVehicleMake" name="tradeInVehicleMake">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tradeInVehicleTrim">Trim</label>
+                          <input type="text" class="form-control" id="tradeInVehicleTrim" name="tradeInVehicleTrim">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tradeInVehicleColour">Colour</label>
+                          <input type="text" class="form-control" id="tradeInVehicleColour" name="tradeInVehicleColour">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tradeInVin">VIN</label>
+                          <input type="text" class="form-control" id="tradeInVin" name="tradeInVin">
+                        </div>
+                          <div class="col-g-3">
+                          <label for="tadeInKms">KMS</label>
+                          <input type="text" class="form-control" id="tadeInKms" name="tadeInKms">
+                        </div>
+
+                  <div class="form-group clearfix">
+                    <a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+                    <a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+                  </div>
+                </fieldset>
+
+    						<fieldset class="wizard-fieldset">
+    							<h5>Extended Warranty</h5>
+                <div class="col-g-3">
+                <label for="warrantyRetailValue">Retail Value</label>
+                <input type="text" class="form-control" id="warrantyRetailValue" name="warrantyRetailValue">
+              </div>
+                <div class="col-g-3">
+                <label for="warrantyCompany">Company</label>
+                <input type="text" class="form-control" id="warrantyCompany" name="warrantyCompany">
+              </div>
+            <div class="col-g-3">
+            <label for="warrantyMonths">Months</label>
+            <input type="text" class="form-control" id="warrantyMonths" name="warrantyMonths">
+          </div>
+        <div class="col-g-3">
+        <label for="warrantyKMS">KMS</label>
+        <input type="text" class="form-control" id="warrantyKMS" name="warrantyKMS"> 
+      </div>
+    <div class="col-g-3">
+    <label for="warrantyDescription">Description</label>
+    <input type="text" class="form-control" id="warrantyDescription" name="warrantyDescription">
+  </div>
+    							<div class="form-group clearfix">
+    								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+    								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+    							</div>
+    						</fieldset>
+    						<fieldset class="wizard-fieldset">
+    							<h5>Payment Information</h5>
+                  <div class="termsOfSettlement">
+                  <label for="Price">Price</label>
+                  <input type="text" class="form-control" id="Price"  name="Price">
+
+                  <label for="Warranty">Warranty</label>
+                  <input type="text" class="form-control" id="Warranty" name="Warranty">
+
+                  <label for="add1">Aditional Item</label>
+                  <input type="text" class="form-control" id="add1" name="add1">
+
+                  <label for="tradeInAmount">Trade-in Allowance</label>
+                  <input type="text" class="form-control" id="tradeInAmount" name="tradeInAmount">
+
+                  <label for="licenseFee">License Fee</label>
+                  <input type="text" class="form-control" id="licenseFee" name="licenseFee">
+
+                  <label for="deposit">Deposit</label>
+                  <input type="text" class="form-control" id="deposit" name="deposit"> 
+
+                </div>
+    							<div class="form-group clearfix">
+    								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
+    								<a href="javascript:;" class="form-wizard-submit float-right">Submit</a>
+    							</div>
+    						</fieldset>
+    					</form>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+<script>
+jQuery(document).ready(function() {
+	// click on next button
+	jQuery('.form-wizard-next-btn').click(function() {
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		var next = jQuery(this);
+		var nextWizardStep = true;
+		parentFieldset.find('.wizard-required').each(function(){
+			var thisValue = jQuery(this).val();
+
+			if( thisValue == "") {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+				nextWizardStep = false;
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+		if( nextWizardStep) {
+			next.parents('.wizard-fieldset').removeClass("show","400");
+			currentActiveStep.removeClass('active').addClass('activated').next().addClass('active',"400");
+			next.parents('.wizard-fieldset').next('.wizard-fieldset').addClass("show","400");
+			jQuery(document).find('.wizard-fieldset').each(function(){
+				if(jQuery(this).hasClass('show')){
+					var formAtrr = jQuery(this).attr('data-tab-content');
+					jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+						if(jQuery(this).attr('data-attr') == formAtrr){
+							jQuery(this).addClass('active');
+							var innerWidth = jQuery(this).innerWidth();
+							var position = jQuery(this).position();
+							jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+						}else{
+							jQuery(this).removeClass('active');
+						}
+					});
+				}
+			});
+		}
+	});
+	//click on previous button
+	jQuery('.form-wizard-previous-btn').click(function() {
+		var counter = parseInt(jQuery(".wizard-counter").text());;
+		var prev =jQuery(this);
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		prev.parents('.wizard-fieldset').removeClass("show","400");
+		prev.parents('.wizard-fieldset').prev('.wizard-fieldset').addClass("show","400");
+		currentActiveStep.removeClass('active').prev().removeClass('activated').addClass('active',"400");
+		jQuery(document).find('.wizard-fieldset').each(function(){
+			if(jQuery(this).hasClass('show')){
+				var formAtrr = jQuery(this).attr('data-tab-content');
+				jQuery(document).find('.form-wizard-steps .form-wizard-step-item').each(function(){
+					if(jQuery(this).attr('data-attr') == formAtrr){
+						jQuery(this).addClass('active');
+						var innerWidth = jQuery(this).innerWidth();
+						var position = jQuery(this).position();
+						jQuery(document).find('.form-wizard-step-move').css({"left": position.left, "width": innerWidth});
+					}else{
+						jQuery(this).removeClass('active');
+					}
+				});
+			}
+		});
+	});
+	//click on form submit button
+	jQuery(document).on("click",".form-wizard .form-wizard-submit" , function(){
+    console.log("submit clicked");
+    console.log($('form').serializeArray());
+
+    $.ajax({
+      url:"http://localhost:3001/BOS/Submit",
+      dataType: 'json',
+      type: "POST",
+      data: $('form').serializeArray(),
+      success: function (data,status,xhr) {
+        console.log("status: " + status);
+        console.log("data: " + data);
+        console.log("xhr: " + xhr);
+      },
+      error: function (error) { console.log("error: " + JSON.stringify(error));}
+    })
+
+		var parentFieldset = jQuery(this).parents('.wizard-fieldset');
+		var currentActiveStep = jQuery(this).parents('.form-wizard').find('.form-wizard-steps .active');
+		parentFieldset.find('.wizard-required').each(function() {
+			var thisValue = jQuery(this).val();
+			if( thisValue == "" ) {
+				jQuery(this).siblings(".wizard-form-error").slideDown();
+			}
+			else {
+				jQuery(this).siblings(".wizard-form-error").slideUp();
+			}
+		});
+	});
+	// focus on input field check empty or not
+	jQuery(".form-control").on('focus', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().addClass("focus-input");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+		}
+	}).on('blur', function(){
+		var tmpThis = jQuery(this).val();
+		if(tmpThis == '' ) {
+			jQuery(this).parent().removeClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideDown("3000");
+		}
+		else if(tmpThis !='' ){
+			jQuery(this).parent().addClass("focus-input");
+			jQuery(this).siblings('.wizard-form-error').slideUp("3000");
+		}
+	});
+});
+</script>
+  </body>
+</html>
