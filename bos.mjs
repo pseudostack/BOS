@@ -41,10 +41,18 @@ app.get('/new', function(req,res){
   res.sendFile('/projects/bos/new.html');
 });
 
+//contractDay,contractMonth,contractYear,firstName,middleName,lastName,address,city,province,postalCode,telephone,driversLicenseNo,driversLicenseEx,email,
+
 
 app.post('/BOS/Submit', function(req,res){
   console.log(req.body);
-console.log("data recieved!");
+  console.log("data recieved!");
+  modifyPdf(req.body.contractDay,req.body.contractMonth,req.body.contractYear,req.body.firstName,req.body.middleName,
+    req.body.lastName,req.body.address,req.body.city,req.body.province,
+    req.body.postalCode,req.body.telephone,req.body.driversLicenseNo,
+    req.body.driversLicenseEx,req.body.email,
+    req.body.vehicleYear,req.body.vehicleMake,req.body.vehicleModel,req.body.vehicleBodyType,
+    req.body.vehicleColour,req.body.vehicleStock,req.body.vin,req.body.distanceTravelled)
 
 });
 
@@ -61,12 +69,11 @@ app.get('/BOS', function(req,res){
     });
 });
 
-
 modifyPdf();
 
-
-
-async function modifyPdf() {
+async function modifyPdf(contractDay,contractMonth,contractYear,firstName,middleName,lastName,address,
+  city,province,postalCode,telephone,driversLicenseNo,driversLicenseEx,email,
+  vehicleYear,vehicleMake,vehicleModel,vehicleBodyType,vehicleColour,vehicleStock,vin,distanceTravelled) {
     const BOS = await PDFDocument.load(fs.readFileSync('/projects/bos/BOS.PDF'))
     const helveticaFont = await BOS.embedFont(StandardFonts.Helvetica)
     const pages = BOS.getPages()
@@ -91,9 +98,6 @@ async function modifyPdf() {
       font: helveticaFont,
     })
 
-    contract_DD.setText('11');
-
-
     const contract_MM = form.createTextField("contract_MM");
 
     contract_MM.addToPage(firstPage, {
@@ -107,10 +111,6 @@ async function modifyPdf() {
       font: helveticaFont,
     })
 
-    contract_MM.setText('11');
-
-
-
     const contract_YY = form.createTextField("contract_YY");
 
     contract_YY.addToPage(firstPage, {
@@ -123,9 +123,6 @@ async function modifyPdf() {
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    contract_YY.setText('1989');
-
 
     firstPage.drawText('Berlin Auto Sales Inc', {
       x: 20,
@@ -162,71 +159,58 @@ async function modifyPdf() {
       font: helveticaFont,
     })
 
-
-
     const first_name = form.createTextField("first_name");
 
     first_name.addToPage(firstPage, {
-      x: 86,
+      x: 67,
       y: 672,
-      width: 30,
+      width: 70,
       height: 13,
       textSize: 10,
       textColor: rgb(1, 0, 0),
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    first_name.setText('first_name');
-
 
     const middle_name = form.createTextField("middle_name");
 
     middle_name.addToPage(firstPage, {
-      x: 180,
+      x: 150,
       y: 672,
-      width: 30,
+      width: 70,
       height: 13,
       textSize: 10,
       textColor: rgb(1, 0, 0),
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    middle_name.setText('Jake');
 
 
     const last_name = form.createTextField("last_name");
 
     last_name.addToPage(firstPage, {
-      x: 240,
+      x: 230,
       y: 672,
-      width: 30,
+      width: 70,
       height: 13,
       textSize: 10,
       textColor: rgb(1, 0, 0),
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    last_name.setText('Hossein');
-
 
     const purchaser_address = form.createTextField("purchaser_address");
 
     purchaser_address.addToPage(firstPage, {
       x: 20,
       y: 652,
-      width: 100,
+      width: 200,
       height: 13,
       textSize: 10,
       textColor: rgb(1, 0, 0),
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    purchaser_address.setText('105 Breithaupt St');
-
 
     const purchaser_city = form.createTextField("purchaser_city");
 
@@ -240,8 +224,6 @@ async function modifyPdf() {
       borderWidth: 0,
       font: helveticaFont,
     })
-
-    purchaser_city.setText('Waterloo');
 
 
 
@@ -258,7 +240,7 @@ async function modifyPdf() {
       font: helveticaFont,
     })
 
-    purchaser_prov.setText('Ontario');
+
 
 ///////////////////////////
 
@@ -275,7 +257,7 @@ purchaser_pc.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-purchaser_pc.setText('N2H 5G9');
+
 
 ///////////////////////////
 
@@ -292,7 +274,7 @@ purchaser_tn.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-purchaser_tn.setText('519 745 7856');
+
 
 
 ///////////////////////////
@@ -310,7 +292,7 @@ purchaser_bn.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-purchaser_bn.setText('226 336 7873');
+//purchaser_bn.setText('226 336 7873');
 
 
 ///////////////////////////
@@ -328,7 +310,7 @@ driver_license.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-driver_license.setText('H6aw8aw7eaw7856');
+
 
 
 ///////////////////////////
@@ -346,7 +328,7 @@ dl_expiry.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-dl_expiry.setText('2020-01-01');
+
 
 
 
@@ -365,88 +347,161 @@ purhaser_email.addToPage(firstPage, {
   font: helveticaFont,
 })
 
-purhaser_email.setText('info@berlinautosales.ca');
 
 
     //VEHICLE INFORMATION
-    firstPage.drawText('13', {
-      x: 310,
+
+    
+const vehicle_year = form.createTextField("vehicle_year");
+
+vehicle_year.addToPage(firstPage, {
+      x: 308,
       y: 676,
-      size: 10,
+      width: 18,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
 
-    firstPage.drawText('Audi', {
+    const vehicle_make = form.createTextField("vehicle_make");
+
+    vehicle_make.addToPage(firstPage, {
       x: 335,
       y: 676,
-      size: 10,
+      width: 50,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
+    const vehicle_model = form.createTextField("vehicle_model");
 
-    firstPage.drawText('S5', {
+    vehicle_model.addToPage(firstPage, {
       x: 400,
       y: 676,
-      size: 10,
+      width: 50,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
+    const vehicle_body_type = form.createTextField("vehicle_body_type");
 
-    firstPage.drawText('2DR', {
+    vehicle_body_type.addToPage(firstPage, {
       x: 462,
       y: 676,
-      size: 10,
+      width: 40,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
+    const vehicle_colour = form.createTextField("vehicle_colour");
 
-    firstPage.drawText('BLACK', {
+    vehicle_colour.addToPage(firstPage, {
       x: 510,
       y: 676,
-      size: 10,
+      width: 30,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
 
-    firstPage.drawText('0788', {
+    const vehicle_stock = form.createTextField("vehicle_stock");
+
+    vehicle_stock.addToPage(firstPage, {
       x: 550,
       y: 676,
-      size: 10,
+      width: 40,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
 
-    firstPage.drawText('2    W    G    F    Y    R    7    W    J    F    H    T    J    H    D    6', {
-      x: 312,
-      y: 656,
-      size: 10,
+    const vehicle_vin = form.createTextField("vehicle_vin");
+
+    vehicle_vin.addToPage(firstPage, {  x: 312,
+      y: 654,
+      width: 150,
+      height: 10,
+      textSize: 12,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
+    
 
+/*
 //KMS
+if (vehicleInKMS == true)
+{
     firstPage.drawText('x', {
       x: 359,
       y: 642,
-      size: 7,
+      width: 80,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
-//MILES
+  }
+
+  //MILES
+  else if (vehicleInMiles = true)
+  {
     firstPage.drawText('x', {
       x: 386,
       y: 642,
-      size: 7,
+      width: 80,
+      height: 9,
+      textSize: 10,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
-
+  }
+    
+if (vehileDistanceUnknown == true)
+{
 //DISTANCE UNKNOWN
 firstPage.drawText('x', {
   x: 412,
   y: 642,
-  size: 7,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
   font: helveticaFont,
 })
+}
 
-
+if (vehileLastKnownDistance == true)
+{
 //DISTANCE UNKNOWN  (last known mileage)
 firstPage.drawText('x', {
   x: 412,
   y: 635,
-  size: 7,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
   font: helveticaFont,
 })
 
@@ -454,7 +509,11 @@ firstPage.drawText('x', {
 firstPage.drawText('235000', {
   x: 468,
   y: 635,
-  size: 7,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
   font: helveticaFont,
 })
 
@@ -462,28 +521,48 @@ firstPage.drawText('235000', {
 firstPage.drawText('235000', {
   x: 530,
   y: 635,
-  size: 7,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
   font: helveticaFont,
 })
 
+
+}
+
+if (actualDistanceHigher == true)
+{
 //ACTUAL UNKNOWN  (last known mileage)
 firstPage.drawText('x', {
   x: 412,
   y: 622,
-  size: 7,
+  width: 80,
+  height: 9,
+  textSize: 10,
+  textColor: rgb(1, 0, 0),
+  borderWidth: 0,
   font: helveticaFont,
 })
+}
 
 
+*/
 
-//KILOMETERS
-    firstPage.drawText('1 9 1 0 0 0 ', {
+const vehicle_distance_travelled = form.createTextField("vehicle_distance_travelled");
+
+vehicle_distance_travelled.addToPage(firstPage, {  x: 312,
       x: 312,
       y: 626,
-      size: 10,
+      width: 80,
+      height: 10,
+      textSize: 12,
+      textColor: rgb(1, 0, 0),
+      borderWidth: 0,
       font: helveticaFont,
     })
-
+    
   //Warranty in servic date
   firstPage.drawText('Oct 12, 2013 ', {
     x: 310,
@@ -892,6 +971,29 @@ total_balane_due_cents.addToPage(firstPage, {
   borderWidth: 0,
   font: helveticaFont,
 })
+
+
+contract_DD.setText(contractDay);
+contract_MM.setText(contractMonth);
+contract_YY.setText(contractYear);
+first_name.setText(firstName);
+middle_name.setText(middleName);
+last_name.setText(lastName);
+purchaser_address.setText(address);
+purchaser_city.setText(city);
+purchaser_prov.setText(province);
+purchaser_pc.setText(postalCode);
+purchaser_tn.setText(telephone);
+driver_license.setText(driversLicenseNo);
+dl_expiry.setText(driversLicenseEx);
+vehicle_year.setText(vehicleYear);
+vehicle_make.setText(vehicleMake);
+vehicle_model.setText(vehicleModel);
+
+vehicle_body_type.setText(vehicleBodyType);
+vehicle_colour.setText(vehicleColour);
+vehicle_vin.setText(vin);
+vehicle_distance_travelled.setText(distanceTravelled);
 
 
 total_balane_due.setText('5555');
